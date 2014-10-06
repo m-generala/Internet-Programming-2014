@@ -1,13 +1,16 @@
 package org.crysis.web;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public abstract class BasicClient implements IBasicClient {
-	private final String SERVER;
+	private final String server;
+	private final int port;
 	private Socket clientSocket;
 	
-	public BasicClient(String server){
-		this.SERVER = server;
+	public BasicClient(String server, int port){
+		this.server = server;
+		this.port = port;
 	}
 	
 	protected Socket getServerSocket() {
@@ -21,8 +24,16 @@ public abstract class BasicClient implements IBasicClient {
 			throw new  IllegalArgumentException("Can't set server socket to null");
 		}
 	}
+	
+	public String getServer() {
+		return this.server;
+	}
+	
+	public int getPort() {
+		return this.port;
+	}
 
-	public abstract void sendRequest();
+	public abstract String sendRequest() throws IOException;
 
-	public abstract void receiveRequest();
+	public abstract void receiveAnswer();
 }

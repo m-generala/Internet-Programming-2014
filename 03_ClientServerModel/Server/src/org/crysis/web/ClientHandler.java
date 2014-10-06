@@ -1,16 +1,15 @@
 package org.crysis.web;
 
+import java.io.IOException;
 import java.net.Socket;
-import java.io.*;
 
-public abstract class ClientHandler implements IClientHandler  {
+public abstract class ClientHandler implements IClientHandler {
 	private Socket clientSocket;
-	
-	public ClientHandler(final Socket clientSocket) {
-		setClientSocket(clientSocket);
+
+	public ClientHandler() {
 	}
 
-	protected void setClientSocket(Socket clientSocket) {
+	public void setClientSocket(final Socket clientSocket) {
 		if(clientSocket == null){
 			throw new IllegalArgumentException("Client socket cannot be null");
 		}
@@ -18,18 +17,17 @@ public abstract class ClientHandler implements IClientHandler  {
 		this.clientSocket = clientSocket;
 	}
 
-	protected Socket getClientSocket() {
+	public Socket getClientSocket() {
 		return this.clientSocket;
 	}
-
-	//From runnable interface
-	public void run() {
+	
+	public void run(){
 		try {
-			handleClient(clientSocket);
+			this.handleClient();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public abstract void handleClient(final Socket clientSocket) throws IOException;
+	public abstract void handleClient() throws IOException;
 }

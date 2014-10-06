@@ -1,7 +1,9 @@
 package org.crysis.web;
 
+import java.io.IOException;
+
 public interface IBasicClient {
-	void sendRequest();
+	String sendRequest() throws IOException;
 	
-	void receiveRequest();
+	void receiveAnswer();
 }
