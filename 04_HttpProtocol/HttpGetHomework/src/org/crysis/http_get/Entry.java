@@ -21,11 +21,9 @@ final class Entry {
 		CharacterResponse response = client.createGet(HTTP_METHOD_GET);
 		
 		int status = getStatus(response.getStatusLine());
-		
 		System.out.println("Current status: " + status);
 		
 		response = getMeaningfulAnswer(client, response, status);
-		
 		
 		String responseBody = new String(response.getBody());
 		System.out.println(responseBody.isEmpty() ? "No body, sorry" : "Body: " + responseBody);
@@ -34,7 +32,6 @@ final class Entry {
 	private static CharacterResponse getMeaningfulAnswer(HttpClient client,
 			CharacterResponse response, int status)
 			throws IOException, UnknownHostException {
-	
 		long startTime = System.currentTimeMillis();
 		
 		List<HttpHeader> headers = response.getHeaders();
@@ -50,7 +47,6 @@ final class Entry {
 			for(HttpHeader header : headers) {
 				if(header.getName().equalsIgnoreCase("location")) {
 					handleUrl(client, header);
-					
 					response = client.createGet(HTTP_METHOD_GET);
 					headers = response.getHeaders();
 					break;
@@ -84,6 +80,7 @@ final class Entry {
 		url = url.replace("https://", "");
 		String[] splittedUrl = url.split("/");
 		host = splittedUrl[0];
+		
 		StringBuilder builder = new StringBuilder();
 		builder.append('/');
 		for(int i = 1; i < splittedUrl.length; i++) {
