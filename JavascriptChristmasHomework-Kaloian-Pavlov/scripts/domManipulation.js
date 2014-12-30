@@ -1,4 +1,4 @@
-﻿/// <reference path="../libs/jquery-1.3.2.min.js" />
+﻿/// <reference path="../libs/jquery-2.1.3.min.js" />
 $(document).ready(function () {
     function addButton() {
         var unorderedList = $('#menu-top-level-menu'),
@@ -22,7 +22,8 @@ $(document).ready(function () {
         ul.attr('id', 'posts');
         div.attr('id', 'dynamiccontent');
 
-        button.html('I AM BUTTON');
+        button.attr('id', 'addbutton');
+        button.html('Send');
 
         div.append(input);
         div.append(button);

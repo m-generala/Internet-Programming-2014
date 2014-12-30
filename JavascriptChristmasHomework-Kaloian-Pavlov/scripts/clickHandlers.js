@@ -1,4 +1,4 @@
-﻿/// <reference path="../libs/jquery-1.3.2.min.js" />
+﻿/// <reference path="../libs/jquery-2.1.3.min.js" />
 $(document).ready(function () {
     function addOnClickTopMenuLink() {
         var linkElement = $('#menu-top-level-menu a:last-child');
