@@ -16,9 +16,12 @@
 
      var footer = $('#footer'),
          input = $('<input>'),
+         button = $('<button>'),
          div = $('<div>');
      div.attr('id', 'dynamiccontent');
      input.attr('id', 'textinput');
+     button.attr('id', 'addbutton');
      div.append(input);
+     div.append(button);
      footer.prepend(div);
 });
