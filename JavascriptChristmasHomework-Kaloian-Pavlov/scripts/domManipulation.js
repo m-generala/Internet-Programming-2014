@@ -4,7 +4,7 @@ $(document).ready(function () {
         var unorderedList = $('#menu-top-level-menu'),
             listElement = $('<li>'),
             linkElement = $('<a>');
-
+        
         linkElement.html('new button');
         listElement.append(linkElement);
         unorderedList.append(listElement);
