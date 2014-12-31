@@ -89,5 +89,8 @@
          }
      });
         
-     
+     var newinput = $('<input>'),
+         oldlist = $("#posts");
+     newinput.insertBefore(oldlist);
+     //newinput.prepend($('#posts'))
  });
