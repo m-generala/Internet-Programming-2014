@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿// please choose your host here !!!
+var host = 'http://jsonplaceholder.typicode.com/posts';
+
+$(document).ready(function () {
     var paragraphInCol1 = $('#col1 p'),
         tuLink = $('#footer a:first-child');
     

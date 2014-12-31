@@ -1,10 +1,15 @@
 ﻿/// <reference path="../libs/jquery-2.1.3.min.js" />
 
 $(document).ready(function () {
+    function printErrorMessage(err) {
+        alert('An error has occured');
+    }
+
     function getFirstFivePosts() {
-        $.get('http://jsonplaceholder.typicode.com/posts', function (data) {
-            addToPosts(data);
-        });
+        $.get(host)
+         .then(function (data) {
+             addToPosts(data);
+         }, printErrorMessage);
     }
 
     function addToPosts(posts) {
@@ -40,7 +45,7 @@ $(document).ready(function () {
 
     function addNewPostToList(data) {
         var id = data.id;
-        $.get('http://jsonplaceholder.typicode.com/posts/' + id).then(function (data) {
+        $.get(host + '/' + id).then(function (data) {
             var list = $('#posts'),
                 newElement = $("<li/>");
 
@@ -48,14 +53,14 @@ $(document).ready(function () {
             newElement.text(data.body);
             addDeleteButton(newElement, id);
             list.append(newElement);
-        });
+        }, printErrorMessage);
     }
 
     function addPostFunctionality() {
         var button = $('#addbutton');
         button.click(function () {
-            var input = $('#textinput');
-            var inputValue = input.val();
+            var input = $('#textinput'),
+                inputValue = input.val();
 
             if (inputValue === undefined || inputValue === '') {
                 createError();
@@ -71,7 +76,7 @@ $(document).ready(function () {
                     $('#errordiv').remove();
                 }
 
-                $.post('http://jsonplaceholder.typicode.com/posts', data, addNewPostToList, 'json')
+                $.post(host , data, addNewPostToList, 'json')
                     .error(function (err) {
                         alert(err);
                     });
@@ -94,7 +99,7 @@ function addDeleteButton(linkToAddTo, id) {
             var id = button.attr('data-id');
 
             $.ajax({
-                url: 'http://jsonplaceholder.typicode.com/posts/' + id,
+                url: host + '/' + id,
                 type: 'DELETE',
                 success: function (result) {
                     $('#post' + id).remove();

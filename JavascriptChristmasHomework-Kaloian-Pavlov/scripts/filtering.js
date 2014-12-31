@@ -12,7 +12,7 @@ $(document).ready(function () {
         input.on('input', function (e) {
             var text = input.val();
 
-            $.get('http://jsonplaceholder.typicode.com/posts?userId=' + text)
+            $.get(host + '?userId=' + text)
              .then(function (data) {
                  var postsUl = $('#posts'),
                      li;
@@ -22,6 +22,7 @@ $(document).ready(function () {
                      li = $('<li>');
                      li.attr('id', 'post' + this.id);
                      li.html(this.title);
+
                      addDeleteButton(li, this.id);
                      postsUl.append(li);
                  });
@@ -29,7 +30,6 @@ $(document).ready(function () {
                  alert('Something went wrong!');
              });
         });
-
         return input;
     }
 
