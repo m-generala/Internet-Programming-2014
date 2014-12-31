@@ -27,4 +27,9 @@
      div.append(button);
      div.append(ul);
      footer.prepend(div);
+
+     var Buttonclick = $('#menu-top-level-menu a:last-child');
+     Buttonclick.click(function () {
+         alert("hello wolrd");
+     });
 });
