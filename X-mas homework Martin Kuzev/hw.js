@@ -36,4 +36,18 @@
          col1.html(col2.html());
          col2.html(tmp);
      });
-});
+
+     var test = $("#addbutton");
+     test.click(function () {
+         var box = $("#textinput");
+         var name = box.val();
+         if (!name) {
+             alert("Enter text");
+             return;
+         }
+
+     });
+     
+        
+     
+ });
