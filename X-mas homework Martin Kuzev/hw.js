@@ -58,9 +58,12 @@
              if (status) {
                  var list = $("#posts"),
                  newpost = $("<li>"),
+                 i = 0,
                  newelem = $("<a>"),
                  newbutton = $("<button>");
+                 i++;
                  newbutton.attr('id', 'dadada');
+                 newbutton.attr('id',i);
                  newbutton.html("X");
                  newelem.html(box);
                  newpost.append(newelem);
@@ -74,7 +77,16 @@
      });
      var dabutton = $("#dadada");
      dabutton.click(function () {
-         alert("deleting");
+         if (confirm('Are you sure you want to delete this?')) {
+             var del = dabutton.id;
+             $.ajax({
+                 url: host,
+                 type: 'DELETE',
+                 success: function () {
+                     $(del).remove();
+                 }
+             });
+         }
      });
         
      
