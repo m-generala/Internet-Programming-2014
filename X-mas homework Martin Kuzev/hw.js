@@ -30,6 +30,10 @@
 
      var Buttonclick = $('#menu-top-level-menu a:last-child');
      Buttonclick.click(function () {
-         alert("hello wolrd");
+         var col1 = $('#col1'),
+             col2 = $('#col2'),
+             tmp = col1.html();
+         col1.html(col2.html());
+         col2.html(tmp);
      });
 });
