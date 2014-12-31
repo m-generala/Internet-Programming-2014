@@ -14,8 +14,11 @@
     listElement.append(linkElement);
     unorderedList.append(listElement);
 
-    var footer = $('#footer'),
-            div = $('<div>');
-            div.attr('id', 'dynamiccontent');
-            footer.prepend(div);
+     var footer = $('#footer'),
+         input = $('<input>'),
+         div = $('<div>');
+     div.attr('id', 'dynamiccontent');
+     input.attr('id', 'textinput');
+     div.append(input);
+     footer.prepend(div);
 });
