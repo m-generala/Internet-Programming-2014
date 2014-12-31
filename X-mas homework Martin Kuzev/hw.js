@@ -22,6 +22,7 @@
      div.attr('id', 'dynamiccontent');
      input.attr('id', 'textinput');
      button.attr('id', 'addbutton');
+     button.html('Send');
      ul.attr('id', 'posts');
      div.append(input);
      div.append(button);
@@ -36,7 +37,7 @@
          col1.html(col2.html());
          col2.html(tmp);
      });
-
+     var host = 'http://jsonplaceholder.typicode.com/posts';
      var test = $("#addbutton");
      test.click(function () {
          var box = $("#textinput");
@@ -45,6 +46,16 @@
              alert("Enter text");
              return;
          }
+         $.post(host, {
+             userId: 5,
+             title: 'Title',
+             body: box
+         },
+         function (data,status) {
+             alert("Data: " + data + "\nStatus: " + status);
+         });
+         box.val("");
+
 
      });
      
