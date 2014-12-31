@@ -40,25 +40,42 @@
      var host = 'http://jsonplaceholder.typicode.com/posts';
      var test = $("#addbutton");
      test.click(function () {
-         var box = $("#textinput");
-         var name = box.val();
-         if (!name) {
+         var inp = $("#textinput"),
+         box = inp.val() ;
+         
+         if (!box) {
              alert("Enter text");
              return;
          }
+
+         
          $.post(host, {
-             userId: 5,
+             userId: '5',
              title: 'Title',
              body: box
          },
-         function (data,status) {
-             alert("Data: " + data + "\nStatus: " + status);
+         function (data, status) {
+             if (status) {
+                 var list = $("#posts"),
+                 newpost = $("<li>"),
+                 newelem = $("<a>"),
+                 newbutton = $("<button>");
+                 newbutton.attr('id', 'dadada');
+                 newbutton.html("X");
+                 newelem.html(box);
+                 newpost.append(newelem);
+                 newpost.append(newbutton);
+                 list.append(newpost);
+             }
          });
-         box.val("");
+         inp.val("");
 
 
      });
-     
+     var dabutton = $("#dadada");
+     dabutton.click(function () {
+         alert("deleting");
+     });
         
      
  });
